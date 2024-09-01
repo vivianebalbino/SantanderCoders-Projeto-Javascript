@@ -36,6 +36,7 @@ let tarefas = [
   },
   // outras tarefas...
 ];
+```
 
 ## ⚙️ Implementação das Funcionalidades
 
