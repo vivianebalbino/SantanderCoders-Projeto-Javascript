@@ -17,7 +17,7 @@ function menuEscolhaTarefa() {
 
         switch (opcaoTarefa) {
             case '1':
-                //Colocar a função de adicionar Tarefa
+                adicionarTarefa();
                 console.log("adicionar tarefa");
                 break;
             case '2':
@@ -41,4 +41,24 @@ function menuEscolhaTarefa() {
         }
 
     } while (opcaoTarefa !== '6');
+}
+
+function adicionarTarefa (){
+    const descricaoTarefa = prompt('Por favor, digite uma descrição para a sua tarefa');
+
+    //Consiste se a descrição da tarefa está vazia
+
+    if(descricaoTarefa === ''){
+        console.log("Descrição da tarefa não pode ser vazia. Por favor digite uma descrição para a tarefa.");
+        return;
+    }
+
+    const implementaTarefa = {
+        id: proximoId++,
+        descricaoTarefa: descricaoTarefa,
+        concluida: false
+    }
+
+    // Insere a tarefa no array.
+    tarefas.push(implementaTarefa);
 }
