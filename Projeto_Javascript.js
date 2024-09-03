@@ -34,7 +34,7 @@ function menuEscolhaTarefa() {
                 break;
             case '5':
                 //Colocar a função de buscar por id Tarefa
-                console.log("Buscar por id a tarefa");
+                listaTarefasID();
                 break;
             default:
                 console.log("Sair");
@@ -43,12 +43,12 @@ function menuEscolhaTarefa() {
     } while (opcaoTarefa !== '6');
 }
 
-function adicionarTarefa (){
+function adicionarTarefa() {
     const descricaoTarefa = prompt('Por favor, digite uma descrição para a sua tarefa');
 
     //Consiste se a descrição da tarefa está vazia
 
-    if(descricaoTarefa === ''){
+    if (descricaoTarefa === '') {
         console.log("Descrição da tarefa não pode ser vazia. Por favor digite uma descrição para a tarefa.");
         return;
     }
@@ -61,4 +61,16 @@ function adicionarTarefa (){
 
     // Insere a tarefa no array.
     tarefas.push(implementaTarefa);
+}
+
+function listaTarefasID() {
+    const idTarefas = Number(prompt('Por favor digite o ID da tarefa que deseja listar.'));
+    const tarefa = tarefas.find(tarefas => tarefas.id === idTarefas);
+
+    if (!tarefa) {
+        console.log("Tarefa não encontrada");
+        return
+    }
+
+    console.log(`ID-Tarefa: ${tarefa.id} - Descrição-Tarefa: ${tarefa.descricaoTarefa}`);
 }
