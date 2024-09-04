@@ -21,7 +21,7 @@ function menuEscolhaTarefa() {
                 console.log("adicionar tarefa");
                 break;
             case '2':
-                //Colocar a função de remover Tarefa
+                //removerTarefa();
                 console.log("Remover tarefa");
                 break;
             case '3':
@@ -61,4 +61,9 @@ function adicionarTarefa (){
 
     // Insere a tarefa no array.
     tarefas.push(implementaTarefa);
+}
+
+//Remover tarefa
+function removerTarefa() {
+
 }
