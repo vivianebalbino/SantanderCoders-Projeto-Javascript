@@ -71,36 +71,30 @@ function removerTarefa() {
       prompt.question("Digite o ID da tarefa que deseja remover:")
     );
 
-    // Caso não seja digitado um número de ID
     if (isNaN(idTarefa)) {
       throw new Error("ID inválido. Por favor, insira um número válido.");
     }
 
-    // Localiza o índice da tarefa com o ID fornecido
     let index = tarefas.findIndex((tarefa) => tarefa.id === idTarefa);
 
-    // Caso a tarefa não seja encontrada
     if (index === -1) {
       throw new Error("Tarefa não encontrada. Verifique o ID digitado.");
     }
 
-    // Pergunta de confirmação e remoção da tarefa
     let confirmacao = prompt
       .question(
         `Você tem certeza que deseja remover a tarefa com ID ${idTarefa}? (sim/não): `
       )
       .toLowerCase();
 
-    // Caso o usuário confirme a remoção
     if (confirmacao === "sim" || confirmacao === "s") {
-      tarefas.splice(index, 1); // Remove a tarefa
+      tarefas.splice(index, 1); 
       console.log(`Tarefa com ID ${idTarefa} removida com sucesso!`);
     } else {
-      console.log("Ação de remoção cancelada."); // Cancela a remoção
+      console.log("Ação de remoção cancelada.");
     }
 
   } catch (erro) {
-    // Captura e exibe a mensagem de erro
     console.log(`Erro: ${erro.message}`);
   } finally {
     console.log("Operação de remoção finalizada.");
