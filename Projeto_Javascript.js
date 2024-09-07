@@ -9,12 +9,12 @@ function menuEscolhaTarefa() {
   do {
     opcaoTarefa = prompt.question(
       "Escolha uma tarefa a ser realizada: \n" +
-        "1. Adicionar uma tarefa\n" +
-        "2. Remover a tarefa\n" +
-        "3. Editar a tarefa\n" +
-        "4. Listar as tarefas\n" +
-        "5. Buscar as tarefas por ID específico\n" +
-        "6. Sair"
+      "1. Adicionar uma tarefa\n" +
+      "2. Remover a tarefa\n" +
+      "3. Editar a tarefa\n" +
+      "4. Listar as tarefas\n" +
+      "5. Buscar as tarefas por ID específico\n" +
+      "6. Sair"
     );
 
     switch (opcaoTarefa) {
@@ -34,7 +34,7 @@ function menuEscolhaTarefa() {
         console.log("Listar tarefa");
         break;
       case "5":
-         listaTarefasID();
+        listaTarefasID();
         console.log("Buscar por id a tarefa");
         break;
       default:
@@ -44,13 +44,13 @@ function menuEscolhaTarefa() {
 }
 
 function adicionarTarefa() {
-  const descricaoTarefa = prompt.question("Por favor, digite uma descrição para a sua tarefa");
+  const descricaoTarefa = prompt.question("Por favor, digite uma descrição para a sua tarefa\n");
 
   //Consiste se a descrição da tarefa está vazia
 
   if (descricaoTarefa === "") {
     console.log(
-      "Descrição da tarefa não pode ser vazia. Por favor digite uma descrição para a tarefa."
+      "Descrição da tarefa não pode ser vazia. Por favor digite uma descrição para a tarefa\n."
     );
     return;
   }
@@ -67,7 +67,7 @@ function adicionarTarefa() {
 
 function removerTarefa() {
   let idTarefa = parseInt(
-    prompt.question("Digite o ID da tarefa que deseja remover:")
+    prompt.question("Digite o ID da tarefa que deseja remover:\n")
   );
 
   //Caso não seja digitado um número de ID
@@ -87,7 +87,7 @@ function removerTarefa() {
   // Pergunta de confirmação e remoção da tarefa:
   let confirmacao = prompt
     .question(
-      `Você tem certeza que deseja remover a tarefa com ID ${idTarefa}? (sim/não): `
+      `Você tem certeza que deseja remover a tarefa com ID ${idTarefa}? (sim/não): \n`
     )
     .toLowerCase();
   if (confirmacao === "sim" || confirmacao === "s") {
@@ -99,18 +99,18 @@ function removerTarefa() {
 }
 
 function listaTarefasID() {
-    const idTarefas = Number(prompt('Por favor digite o ID da tarefa que deseja listar.'));
-    const tarefa = tarefas.find(tarefas => tarefas.id === idTarefas);
+  const idTarefas = Number(prompt('Por favor digite o ID da tarefa que deseja listar.'));
+  const tarefa = tarefas.find(tarefas => tarefas.id === idTarefas);
 
-    if (!tarefa) {
-        console.log("Tarefa não encontrada");
-        return
-    }
+  if (!tarefa) {
+    console.log("Tarefa não encontrada");
+    return
+  }
 
-    console.log(`ID-Tarefa: ${tarefa.id} - Descrição-Tarefa: ${tarefa.descricaoTarefa}`);
+  console.log(`ID-Tarefa: ${tarefa.id} - Descrição-Tarefa: ${tarefa.descricaoTarefa}`);
 }
 
-function editarTarefa(){
+function editarTarefa() {
   let idTarefa = prompt.questionInt("Digite o ID da tarefa que deseja editar:");
 
   if (isNaN(idTarefa)) {
@@ -127,36 +127,36 @@ function editarTarefa(){
 
   let opcaoEdicao = "";
 
-    opcaoEdicao = prompt.question(
-      "Escolha o campo que deseja editar: \n" +
-        "1. Descricao\n" +
-        "2. Status\n" 
+  opcaoEdicao = prompt.question(
+    "Escolha o campo que deseja editar: \n" +
+    "1. Descricao\n" +
+    "2. Status\n"
+  );
+
+  if (opcaoEdicao === "1") {
+    let novaDescricao = prompt.question("Digite a nova descricao: \n");
+
+    if (novaDescricao == "") {
+      console.log("Digite uma descrição válida!");
+      return;
+    }
+
+    tarefas[index].descricaoTarefa = novaDescricao;
+    console.log("Descrição alterada com sucesso!")
+  } else {
+    let novoStatus = prompt.questionInt("A tarefa foi concluída: \n" +
+      "1. Sim\n" +
+      "2. Nao\n"
     );
 
-    if(opcaoEdicao === "1"){
-      let novaDescricao = prompt.question("Digite a nova descricao: \n");
-
-        if(novaDescricao == ""){
-          console.log("Digite uma descrição válida!");
-          return;
-        } 
-
-      tarefas[index].descricaoTarefa = novaDescricao;
-      console.log("Descrição alterada com sucesso!")
+    if (novoStatus === 1) {
+      tarefas[index].concluida = true;
+      console.log("Tarefa concluída!")
     } else {
-      let novoStatus = prompt.questionInt("A tarefa foi concluída: \n" + 
-        "1. Sim\n" +
-        "2. Nao\n"
-      ); 
-
-      if(novoStatus === 1){
-        tarefas[index].concluida = true;
-        console.log("Tarefa concluída!")
-      } else {
-        tarefas[index].concluida = false;
-        console.log("Status alterado com sucesso!")
-      }
+      tarefas[index].concluida = false;
+      console.log("Status alterado com sucesso!")
     }
+  }
 }
 
 menuEscolhaTarefa();
