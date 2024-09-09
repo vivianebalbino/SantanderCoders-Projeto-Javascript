@@ -9,14 +9,14 @@ function menuEscolhaTarefa() {
   do {
     console.log("\n=====================================");
     console.log("        MENU DE TAREFAS              ");
-    console.log("=====================================");
+    console.log("======================================");
     console.log("1. Adicionar uma tarefa");
     console.log("2. Remover a tarefa");
     console.log("3. Editar a tarefa");
     console.log("4. Listar as tarefas");
     console.log("5. Buscar tarefas por ID");
     console.log("6. Voltar ao Menu Inicial");
-    console.log("=====================================");
+    console.log("======================================");
 
     opcaoTarefa = prompt.question("Escolha uma das opções acima: ");
 
@@ -165,8 +165,7 @@ function listarTarefas() {
   console.log("Lista de Tarefas:");
   tarefas.forEach((tarefa) => {
     console.log(
-      `ID: ${tarefa.id} - Descrição: ${tarefa.descricaoTarefa} - Concluída: ${
-        tarefa.concluida ? "Sim" : "Não"
+      `ID: ${tarefa.id} - Descrição: ${tarefa.descricaoTarefa} - Concluída: ${tarefa.concluida ? "Sim" : "Não"
       }`
     );
   });
