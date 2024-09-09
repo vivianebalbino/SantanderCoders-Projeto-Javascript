@@ -46,8 +46,6 @@ function menuEscolhaTarefa() {
 function adicionarTarefa() {
   const descricaoTarefa = prompt.question("Por favor, digite uma descrição para a sua tarefa\n");
 
-  //Consiste se a descrição da tarefa está vazia
-
   if (descricaoTarefa === "") {
     console.log(
       "Descrição da tarefa não pode ser vazia. Por favor digite uma descrição para a tarefa\n."
@@ -60,7 +58,6 @@ function adicionarTarefa() {
     concluida: false,
   };
 
-  // Insere a tarefa no array.
   tarefas.push(implementaTarefa);
 }
 
@@ -70,13 +67,11 @@ function removerTarefa() {
     prompt.question("Digite o ID da tarefa que deseja remover:\n")
   );
 
-  //Caso não seja digitado um número de ID
   if (isNaN(idTarefa)) {
     console.log("ID inválido. Por favor, insira um número.");
     return;
   }
 
-  // Localiza o índice da tarefa com o ID fornecido
   let index = tarefas.findIndex((tarefa) => tarefa.id === idTarefa);
 
   if (index === -1) {
@@ -84,7 +79,6 @@ function removerTarefa() {
     return;
   }
 
-  // Pergunta de confirmação e remoção da tarefa:
   let confirmacao = prompt
     .question(
       `Você tem certeza que deseja remover a tarefa com ID ${idTarefa}? (sim/não): \n`
