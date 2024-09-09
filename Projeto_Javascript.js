@@ -7,12 +7,12 @@ function menuEscolhaTarefa() {
   do {
     opcaoTarefa = prompt(
       "Escolha uma tarefa a ser realizada: \n" +
-        "1. Adicionar uma tarefa\n" +
-        "2. Remover a tarefa\n" +
-        "3. Editar a tarefa\n" +
-        "4. Listar as tarefas\n" +
-        "5. Buscar as tarefas por ID específico\n" +
-        "6. Sair"
+      "1. Adicionar uma tarefa\n" +
+      "2. Remover a tarefa\n" +
+      "3. Editar a tarefa\n" +
+      "4. Listar as tarefas\n" +
+      "5. Buscar as tarefas por ID específico\n" +
+      "6. Sair"
     );
 
     switch (opcaoTarefa) {
@@ -33,7 +33,7 @@ function menuEscolhaTarefa() {
         console.log("Listar tarefa");
         break;
       case "5":
-         listaTarefasID();
+        listaTarefasID();
         console.log("Buscar por id a tarefa");
         break;
       default:
@@ -88,7 +88,7 @@ function removerTarefa() {
       .toLowerCase();
 
     if (confirmacao === "sim" || confirmacao === "s") {
-      tarefas.splice(index, 1); 
+      tarefas.splice(index, 1);
       console.log(`Tarefa com ID ${idTarefa} removida com sucesso!`);
     } else {
       console.log("Ação de remoção cancelada.");
@@ -99,17 +99,18 @@ function removerTarefa() {
   } finally {
     console.log("Operação de remoção finalizada.");
   }
+
 }
 
 function listaTarefasID() {
-    const idTarefas = Number(prompt('Por favor digite o ID da tarefa que deseja listar.'));
-    const tarefa = tarefas.find(tarefas => tarefas.id === idTarefas);
+  const idTarefas = Number(prompt('Por favor digite o ID da tarefa que deseja listar.'));
+  const tarefa = tarefas.find(tarefas => tarefas.id === idTarefas);
 
-    if (!tarefa) {
-        console.log("Tarefa não encontrada");
-        return
-    }
+  if (!tarefa) {
+    console.log("Tarefa não encontrada");
+    return
+  }
 
-    console.log(`ID-Tarefa: ${tarefa.id} - Descrição-Tarefa: ${tarefa.descricaoTarefa}`);
+  console.log(`ID-Tarefa: ${tarefa.id} - Descrição-Tarefa: ${tarefa.descricaoTarefa}`);
 }
 
