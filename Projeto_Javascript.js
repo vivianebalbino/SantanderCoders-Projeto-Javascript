@@ -30,12 +30,10 @@ function menuEscolhaTarefa() {
         editarTarefa();
         break;
       case "4":
-        //Colocar a função de listar Tarefa
-        console.log("Listar tarefa");
+        listarTarefas();
         break;
       case "5":
         listaTarefasID();
-        console.log("Buscar por id a tarefa");
         break;
       default:
         console.log("Sair");
@@ -69,6 +67,7 @@ function adicionarTarefa() {
 //Remover tarefa
 function removerTarefa() {
   try {
+    listarTarefas();
     let idTarefa = parseInt(
       prompt.question("Digite o ID da tarefa que deseja remover:")
     );
@@ -105,15 +104,14 @@ function removerTarefa() {
 }
 
 function listaTarefasID() {
-  const idTarefas = Number(prompt('Por favor digite o ID da tarefa que deseja listar.'));
+  const idTarefas = Number(prompt.question('Digite o ID da tarefa que deseja listar.\n'));
   const tarefa = tarefas.find(tarefas => tarefas.id === idTarefas);
 
-  if (!tarefa) {
-    console.log("Tarefa não encontrada");
-    return
+  try {
+    console.log(`ID-Tarefa: ${tarefa.id} - Descrição-Tarefa: ${tarefa.descricaoTarefa}`);
+  } catch (error) {
+    console.log(`Por favor digitar uma tarefa válida.`);
   }
-
-  console.log(`ID-Tarefa: ${tarefa.id} - Descrição-Tarefa: ${tarefa.descricaoTarefa}`);
 }
 
 function editarTarefa() {
@@ -163,6 +161,26 @@ function editarTarefa() {
       console.log("Status alterado com sucesso!")
     }
   }
+}
+
+function listarTarefas() {
+  try {
+    if (tarefas.length === 0) {
+      console.log("Nenhuma tarefa cadastrada.");
+      return;
+    }
+
+    console.log("Lista de Tarefas:");
+    tarefas.forEach((tarefa) => {
+      console.log(
+        `ID: ${tarefa.id} - Descrição: ${tarefa.descricaoTarefa} - Concluída: ${tarefa.concluida ? "Sim" : "Não"
+        }`
+      );
+    });
+  } catch (error) {
+    console.log(`Erro: ${error.message}`);
+  }
+
 }
 
 menuEscolhaTarefa();
