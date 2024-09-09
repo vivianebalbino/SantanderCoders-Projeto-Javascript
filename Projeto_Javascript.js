@@ -1,7 +1,7 @@
 let tarefas = [];
 let proximoId = 1;
 
-//const prompt = require('readline-sync');
+// const prompt = require('readline-sync');
 
 function menuEscolhaTarefa() {
   let opcaoTarefa;
@@ -14,7 +14,7 @@ function menuEscolhaTarefa() {
       "3. Editar a tarefa\n" +
       "4. Listar as tarefas\n" +
       "5. Buscar as tarefas por ID específico\n" +
-      "6. Sair"
+      "6. Sair\n"
     );
 
     switch (opcaoTarefa) {
@@ -99,7 +99,7 @@ function removerTarefa() {
 }
 
 function listaTarefasID() {
-  const idTarefas = Number(prompt('Por favor digite o ID da tarefa que deseja listar.'));
+  const idTarefas = Number(prompt.question('Por favor digite o ID da tarefa que deseja listar.\n'));
   const tarefa = tarefas.find(tarefas => tarefas.id === idTarefas);
 
   if (!tarefa) {
@@ -107,11 +107,13 @@ function listaTarefasID() {
     return
   }
 
-  console.log(`ID-Tarefa: ${tarefa.id} - Descrição-Tarefa: ${tarefa.descricaoTarefa}`);
+  const status = tarefa.concluida === false ? 'Pendente' : 'Concluída'
+
+  console.log(`ID-Tarefa: ${tarefa.id} - Descrição-Tarefa: ${tarefa.descricaoTarefa} - Status-Tarefa: ${status}`);
 }
 
 function editarTarefa() {
-  let idTarefa = prompt.questionInt("Digite o ID da tarefa que deseja editar:");
+  let idTarefa = prompt.questionInt("Digite o ID da tarefa que deseja editar: ");
 
   if (isNaN(idTarefa)) {
     console.log("ID inválido. Por favor, insira um número.");
