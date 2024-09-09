@@ -14,7 +14,7 @@ function menuEscolhaTarefa() {
       "3. Editar a tarefa\n" +
       "4. Listar as tarefas\n" +
       "5. Buscar as tarefas por ID específico\n" +
-      "6. Sair"
+      "6. Sair \n"
     );
 
     switch (opcaoTarefa) {
@@ -47,21 +47,22 @@ function adicionarTarefa() {
   const descricaoTarefa = prompt.question("Por favor, digite uma descrição para a sua tarefa\n");
 
   //Consiste se a descrição da tarefa está vazia
+  try {
+    if (descricaoTarefa === "") {
+      throw new Error("Descrição da tarefa não pode ser vazia. Por favor digite uma descrição para a tarefa");
+    }
+    const implementaTarefa = {
+      id: proximoId++,
+      descricaoTarefa: descricaoTarefa,
+      concluida: false,
+    };
+    // Insere a tarefa no array.
+    tarefas.push(implementaTarefa);
+    console.log("Tarefa inserida com sucesso")
 
-  if (descricaoTarefa === "") {
-    console.log(
-      "Descrição da tarefa não pode ser vazia. Por favor digite uma descrição para a tarefa\n."
-    );
-    return;
+  } catch (e) {
+    console.log(`Erro: ${e.message}`);
   }
-  const implementaTarefa = {
-    id: proximoId++,
-    descricaoTarefa: descricaoTarefa,
-    concluida: false,
-  };
-
-  // Insere a tarefa no array.
-  tarefas.push(implementaTarefa);
 }
 
 
@@ -99,7 +100,7 @@ function removerTarefa() {
     console.log(`Erro: ${erro.message}`);
   } finally {
     console.log("Operação de remoção finalizada.");
- }
+  }
 
 }
 
