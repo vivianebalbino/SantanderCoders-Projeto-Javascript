@@ -1,12 +1,12 @@
 let tarefas = [];
 let proximoId = 1;
 
-//const prompt = require('readline-sync');
+const prompt = require("readline-sync");
 
 function menuEscolhaTarefa() {
   let opcaoTarefa;
 
-  try {
+  do {
     console.log("\n=====================================");
     console.log("        MENU DE TAREFAS              ");
     console.log("=====================================");
@@ -20,38 +20,30 @@ function menuEscolhaTarefa() {
 
     opcaoTarefa = prompt.question("Escolha uma das opções acima: ");
 
-    if (isNaN(opcaoTarefa)) {
-      throw new Error("Entrada inválida! Insira um número válido.");
-    }
-
     switch (opcaoTarefa) {
       case "1":
         adicionarTarefa();
+        console.log("adicionar tarefa");
         break;
       case "2":
         removerTarefa();
+        console.log("Remover tarefa");
         break;
       case "3":
         editarTarefa();
         break;
       case "4":
-        listarTarefas();
+        //Colocar a função de listar Tarefa
+        console.log("Listar tarefa");
         break;
       case "5":
         listaTarefasID();
+        console.log("Buscar por id a tarefa");
         break;
-      case "6":
-        menuInicial();
-        return;
       default:
-        throw new Error("Opção inválida. Tente novamente.");
+        console.log("Sair");
     }
-  } catch (erro) {
-    console.log(`Erro: ${erro.message}`);
-  } finally {
-    console.log("Operação concluída.\n");
-  }
-  while (opcaoTarefa !== "6");
+  } while (opcaoTarefa !== "6");
 }
 
 //Adicionar tarefa
